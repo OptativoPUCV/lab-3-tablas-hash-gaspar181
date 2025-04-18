@@ -108,7 +108,7 @@ Pair * searchMap(HashMap * map,  char * key) {
     }
     else{
         for (long i = pos + 1; i < map->capacity; i++){
-            if(map->buckets[i] != NULL && strcmp(map->buckets[i]->key, key) == 0){
+            if(map->buckets[i] != NULL && map->buckets[i]->key != NULL && strcmp(map->buckets[i]->key, key) == 0){
                 Pair *nuevo = createPair(key, map->buckets[i]->value);
                 map->current = i;
                 return nuevo;
@@ -116,7 +116,7 @@ Pair * searchMap(HashMap * map,  char * key) {
             if(map->buckets[i] == NULL) return NULL;
     }
     for (long i = 0; i < pos; i++){
-        if(map->buckets[i] != NULL && strcmp(map->buckets[i]->key, key) == 0){
+        if(map->buckets[i] != NULL && map->buckets[i]->key != NULL && strcmp(map->buckets[i]->key, key) == 0){
             Pair *nuevo = createPair(key, map->buckets[i]->value);
             map->current = i;
             return nuevo;
