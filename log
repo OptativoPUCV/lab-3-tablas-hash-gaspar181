@@ -82,3 +82,9 @@ hashmap.c:104:10: error: unused variable 'pos' [-Werror=unused-variable]
           ^~~
 cc1.exe: all warnings being treated as errors
 ef96865
+Fri, Apr 18, 2025  5:22:50 PM: 
+ hashmap.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+ tests:  5|4
+total_score: 30/70
+06b6cfc
