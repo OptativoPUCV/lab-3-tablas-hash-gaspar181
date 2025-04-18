@@ -42,28 +42,28 @@ int is_equal(void* key1, void* key2){
 void insertMap(HashMap * map, char * key, void * value) {
     long pos = hash(key, map->capacity);
     int cambio = 0;
-    if (map->buckets[pos] == NULL || map->buckets[pos]->key == NULL){
+    if (map->buckets[pos] == NULL || strcmp(map->buckets[pos]->key, NULL) == 0){
         Pair *nuevo = createPair(key, value);
         map->buckets[pos] = nuevo;
         map->size++;
-        cambio = 1;
+        return;
     }
     else{
         for(long i = (pos + 1); i < map->capacity; i++){
-            if (map->buckets[i] == NULL || map->buckets[i]->key == NULL){
+            if (map->buckets[i] == NULL || strcmp(map->buckets[i]->key, NULL) == 0){
                 Pair *nuevo = createPair(key, value);
                 map->buckets[i] = nuevo;
                 map->size++;
-                cambio = 1;
+                return;
             }
         }
     }
-    if(!cambio){
-        for(long i = 0; i < pos; i++){
+    for(long i = 0; i < pos; i++){
+        if (map->buckets[i] == NULL || strcmp(map->buckets[i]->key, NULL) == 0){
             Pair *nuevo = createPair(key, value);
             map->buckets[i] = nuevo;
             map->size++;
-            cambio = 1;
+            return;
         }
     }
 }
@@ -101,7 +101,8 @@ void eraseMap(HashMap * map,  char * key) {
 }
 
 Pair * searchMap(HashMap * map,  char * key) {   
-
+    long pos = hash(key, map->capacity);
+    //if(strcmp(map->buckets[pos]->key, key) != 0)
 
     return NULL;
 }

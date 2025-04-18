@@ -58,3 +58,27 @@ Fri, Apr 18, 2025  5:06:31 PM:
  tests:  5|4
 total_score: 30/70
 773750e
+Fri, Apr 18, 2025  5:21:04 PM: 
+ hashmap.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+Compilation failed
+In file included from test.c:4:0:
+hashmap.c: In function 'insertMap':
+hashmap.c:45:38: error: null argument where non-null required (argument 2) [-Werror=nonnull]
+     if (map->buckets[pos] == NULL || strcmp(map->buckets[pos]->key, NULL) == 0){
+                                      ^~~~~~
+hashmap.c:53:44: error: null argument where non-null required (argument 2) [-Werror=nonnull]
+             if (map->buckets[i] == NULL || strcmp(map->buckets[i]->key, NULL) == 0){
+                                            ^~~~~~
+hashmap.c:62:40: error: null argument where non-null required (argument 2) [-Werror=nonnull]
+         if (map->buckets[i] == NULL || strcmp(map->buckets[i]->key, NULL) == 0){
+                                        ^~~~~~
+hashmap.c:44:9: error: unused variable 'cambio' [-Werror=unused-variable]
+     int cambio = 0;
+         ^~~~~~
+hashmap.c: In function 'searchMap':
+hashmap.c:104:10: error: unused variable 'pos' [-Werror=unused-variable]
+     long pos = hash(key, map->capacity);
+          ^~~
+cc1.exe: all warnings being treated as errors
+ef96865
