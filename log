@@ -52,3 +52,9 @@ hashmap.c:49:9: error: 'camio' undeclared (first use in this function)
          ^~~~~
 hashmap.c:49:9: note: each undeclared identifier is reported only once for each function it appears in
 f4d4ad9
+Fri, Apr 18, 2025  5:06:31 PM: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  5|4
+total_score: 30/70
+773750e
