@@ -65,7 +65,6 @@ void insertMap(HashMap * map, char * key, void * value) {
             return;
         }
     }
-    return NULL;
 }
 
 void enlarge(HashMap * map) {
@@ -121,8 +120,6 @@ Pair * searchMap(HashMap * map,  char * key) {
         }
         if(map->buckets[i] == NULL) return NULL;
     }
-
-    return NULL;
 }
 
 Pair * firstMap(HashMap * map) {
