@@ -101,14 +101,14 @@ void eraseMap(HashMap * map,  char * key) {
 
 Pair * searchMap(HashMap * map,  char * key) {   
     long pos = hash(key, map->capacity);
-    if(strcmp(map->buckets[pos]->key, key) == 0){
+    if(map->buckets[pos] != NULL && strcmp(map->buckets[pos]->key, key) == 0){
         Pair *nuevo = createPair(key, map->buckets[pos]->value);
         map->current = pos;
         return nuevo;
     }
     else{
         for (long i = pos + 1; i < map->capacity; i++){
-            if(strcmp(map->buckets[i]->key, key) == 0){
+            if(map->buckets[i] != NULL && strcmp(map->buckets[i]->key, key) == 0){
                 Pair *nuevo = createPair(key, map->buckets[i]->value);
                 map->current = i;
                 return nuevo;
@@ -116,7 +116,7 @@ Pair * searchMap(HashMap * map,  char * key) {
             if(map->buckets[i] == NULL) return NULL;
     }
     for (long i = 0; i < pos; i++){
-        if(strcmp(map->buckets[i]->key, key) == 0){
+        if(map->buckets[i] != NULL && strcmp(map->buckets[i]->key, key) == 0){
             Pair *nuevo = createPair(key, map->buckets[i]->value);
             map->current = i;
             return nuevo;
