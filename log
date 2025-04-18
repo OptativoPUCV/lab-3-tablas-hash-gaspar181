@@ -439,3 +439,14 @@ test.c:100:6: error: 'hash_test1' defined but not used [-Werror=unused-function]
       ^~~~~~~~~~
 cc1.exe: all warnings being treated as errors
 e00a894
+Fri, Apr 18, 2025  7:08:25 PM: 
+ hashmap.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+Compilation failed
+In file included from test.c:4:0:
+hashmap.c: In function 'searchMap':
+hashmap.c:127:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1.exe: all warnings being treated as errors
+2223492
