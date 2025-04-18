@@ -53,12 +53,12 @@ void enlarge(HashMap * map) {
 
 HashMap * createMap(long capacity) {
     HashMap *nuevoMapa = (HashMap *)malloc(sizeof(HashMap));
-    if(nuevoMapa == NULL) return EXIT_FAILURE;
+    if(nuevoMapa == NULL) return NULL;
 
     nuevoMapa->buckets = (Pair **)malloc(capacity * sizeof(Pair *));
     if(nuevoMapa->buckets == NULL){
         free(nuevoMapa);
-        return EXIT_FAILURE;
+        return NULL;
     }
 
     for(long i = 0; i < capacity; i++){
