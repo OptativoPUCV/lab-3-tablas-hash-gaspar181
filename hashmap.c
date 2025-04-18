@@ -40,28 +40,22 @@ int is_equal(void* key1, void* key2){
 
 
 void insertMap(HashMap * map, char * key, void * value) {
+    if (map == NULL || key == NULL) return;
+
     long pos = hash(key, map->capacity);
-    if (map->buckets[pos] == NULL || map->buckets[pos]->key == NULL){
-        Pair *nuevo = createPair(key, value);
-        map->buckets[pos] = nuevo;
-        map->size++;
-        return;
-    }
-    else{
-        for(long i = (pos + 1); i < map->capacity; i++){
-            if (map->buckets[i] == NULL || map->buckets[i]->key == NULL){
-                Pair *nuevo = createPair(key, value);
-                map->buckets[i] = nuevo;
-                map->size++;
-                return;
-            }
-        }
-    }
-    for(long i = 0; i < pos; i++){
-        if (map->buckets[i] == NULL || map->buckets[i]->key == NULL){
+
+    for (long i = 0; i < map->capacity; i++) {
+        long index = (pos + i) % map->capacity;
+
+        if (map->buckets[index] == NULL || map->buckets[index]->key == NULL) {
             Pair *nuevo = createPair(key, value);
-            map->buckets[i] = nuevo;
+            map->buckets[index] = nuevo;
+            map->current = index;
             map->size++;
+            return;
+        }
+
+        if (strcmp(map->buckets[index]->key, key) == 0) {
             return;
         }
     }
@@ -100,30 +94,7 @@ void eraseMap(HashMap * map,  char * key) {
 }
 
 Pair * searchMap(HashMap * map,  char * key) {   
-    long pos = hash(key, map->capacity);
-    if(map->buckets[pos] != NULL && map->buckets[pos]->key != NULL && strcmp(map->buckets[pos]->key, key) == 0){
-        Pair *nuevo = createPair(key, map->buckets[pos]->value);
-        map->current = pos;
-        return nuevo;
-    }
-    else{
-        for (long i = pos + 1; i < map->capacity; i++){
-            if(map->buckets[i] != NULL && map->buckets[i]->key != NULL && strcmp(map->buckets[i]->key, key) == 0){
-                Pair *nuevo = createPair(key, map->buckets[i]->value);
-                map->current = i;
-                return nuevo;
-            }
-            if(map->buckets[i] == NULL) return NULL;
-        }
-    }
-    for (long i = 0; i < pos; i++){
-        if(map->buckets[i] != NULL && map->buckets[i]->key != NULL && strcmp(map->buckets[i]->key, key) == 0){
-            Pair *nuevo = createPair(key, map->buckets[i]->value);
-            map->current = i;
-            return nuevo;
-        }
-        if(map->buckets[i] == NULL) return NULL;
-    }
+
     return NULL;
 }
 
