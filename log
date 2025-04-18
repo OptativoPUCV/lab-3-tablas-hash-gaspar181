@@ -41,3 +41,14 @@ Fri, Apr 18, 2025  5:01:10 PM:
  tests:  4|5
 total_score: 20/70
 e42e49d
+Fri, Apr 18, 2025  5:06:05 PM: 
+ hashmap.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+Compilation failed
+In file included from test.c:4:0:
+hashmap.c: In function 'insertMap':
+hashmap.c:49:9: error: 'camio' undeclared (first use in this function)
+         camio = 1;
+         ^~~~~
+hashmap.c:49:9: note: each undeclared identifier is reported only once for each function it appears in
+f4d4ad9
